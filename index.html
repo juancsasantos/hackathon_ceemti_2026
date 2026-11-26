@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Professores</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="container">
+
+        <header>
+            <h1>Consulta de Atividades</h1>
+            <p>Identifique-se para consultar seus professores.</p>
+        </header>
+
+        <section class="formulario">
+
+            <label for="nome">Nome completo</label>
+            <input
+                type="text"
+                id="nome"
+                placeholder="Digite seu nome completo"
+            >
+
+            <label for="carteirinha">ID da carteirinha</label>
+            <input
+                type="text"
+                id="carteirinha"
+                placeholder="Digite o ID da carteirinha"
+            >
+
+            <label for="turma">Selecione sua turma</label>
+            <select id="turma">
+                <option value="">Selecione sua turma</option>
+                <option value="1º 01 ANC">1º 01 ANC</option>
+                <option value="1º 02 ANC">1º 02 ANC</option>
+                <option value="1º 01 IPI">1º 01 IPI</option>
+                <option value="1º 02 IPI">1º 02 IPI</option>
+                <option value="1º RDC">1º RDC</option>
+                <option value="2º MCN">2º MCN</option>
+                <option value="2º 01 ANC">2º 01 ANC</option>
+                <option value="2º 02 ANC">2º 02 ANC</option>
+                <option value="2º 01 IPI">2º 01 IPI</option>
+                <option value="2º 02 IPI">2º 02 IPI</option>
+                <option value="2º MSI">2º MSI</option>
+                <option value="3º ESP">3º ESP</option>
+                <option value="3º ANC">3º ANC</option>
+                <option value="3º 01 IPI">3º 01 IPI</option>
+                <option value="3º 02 IPI">3º 02 IPI</option>
+                <option value="3º MSI">3º MSI</option>
+                <option value="outra">Outra turma</option>
+            </select>
+
+            <button type="button" onclick="consultarProfessores()">
+                Consultar Atividades
+            </button>
+
+            <p id="mensagem"></p>
+
+        </section>
+
+        <section id="resultado" class="resultado">
+            
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
