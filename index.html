@@ -1,71 +1,89 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consulta de Professores</title>
+    <title>Central de Atividades</title>
     <link rel="stylesheet" href="style.css">
+    <script src="dados.js" defer></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
-
     <main class="container">
-
         <header>
             <h1>Consulta de Atividades</h1>
-            <p>Identifique-se para consultar seus professores.</p>
+            <p>Consulte e organize suas atividades escolares.</p>
         </header>
 
-        <section class="formulario">
+        <nav>
+            <button type="button" data-view="estudante" class="ativo">Estudante</button>
+            <button type="button" data-view="gestao">Gestão escolar</button>
+        </nav>
 
-            <label for="nome">Nome completo</label>
-            <input
-                type="text"
-                id="nome"
-                placeholder="Digite seu nome completo"
-            >
+        <section id="estudante">
+            <h2>Minhas atividades</h2>
 
-            <label for="carteirinha">ID da carteirinha</label>
-            <input
-                type="text"
-                id="carteirinha"
-                placeholder="Digite o ID da carteirinha"
-            >
+            <div class="filtros">
+                <div class="campo">
+                    <label for="aluno">Selecione seu nome</label>
+                    <select id="aluno"></select>
+                </div>
+                <div class="campo">
+                    <label for="busca">Pesquisar atividade</label>
+                    <input id="busca" placeholder="Título ou disciplina">
+                </div>
+                <div class="campo">
+                    <label for="filtro">Situação</label>
+                    <select id="filtro">
+                        <option value="">Todas</option>
+                        <option value="pendente">Pendentes</option>
+                        <option value="atrasada">Atrasadas</option>
+                        <option value="concluida">Concluídas</option>
+                    </select>
+                </div>
+            </div>
 
-            <label for="turma">Selecione sua turma</label>
-            <select id="turma">
-                <option value="">Selecione sua turma</option>
-                <option value="1º 01 ANC">1º 01 ANC</option>
-                <option value="1º 02 ANC">1º 02 ANC</option>
-                <option value="1º 01 IPI">1º 01 IPI</option>
-                <option value="1º 02 IPI">1º 02 IPI</option>
-                <option value="1º RDC">1º RDC</option>
-                <option value="2º MCN">2º MCN</option>
-                <option value="2º 01 ANC">2º 01 ANC</option>
-                <option value="2º 02 ANC">2º 02 ANC</option>
-                <option value="2º 01 IPI">2º 01 IPI</option>
-                <option value="2º 02 IPI">2º 02 IPI</option>
-                <option value="2º MSI">2º MSI</option>
-                <option value="3º ESP">3º ESP</option>
-                <option value="3º ANC">3º ANC</option>
-                <option value="3º 01 IPI">3º 01 IPI</option>
-                <option value="3º 02 IPI">3º 02 IPI</option>
-                <option value="3º MSI">3º MSI</option>
-                <option value="outra">Outra turma</option>
-            </select>
+            <p id="turma-atual" class="muted"></p>
+            <div id="indicadores" class="indicadores"></div>
+            <div id="cartoes" class="cartoes"></div>
 
-            <button type="button" onclick="consultarProfessores()">
-                Consultar Atividades
-            </button>
-
-            <p id="mensagem"></p>
-
+            <details class="painel">
+                <summary>Professores da turma</summary>
+                <ul id="docentes"></ul>
+            </details>
         </section>
 
-        <section id="resultado" class="resultado">
-            
+        <section id="gestao" hidden>
+            <h2>Gestão escolar</h2>
+            <div class="abas" id="abas">
+                <button data-tab="atividades" class="ativo">Atividades</button>
+                <button data-tab="turmas">Turmas</button>
+                <button data-tab="professores">Professores</button>
+                <button data-tab="disciplinas">Disciplinas</button>
+                <button data-tab="alunos">Estudantes</button>
+            </div>
+
+            <div class="gestao-colunas">
+                <div class="painel">
+                    <h3 id="form-titulo"></h3>
+                    <form id="cadastro">
+                        <div id="campos" class="formulario"></div>
+                        <div class="acoes">
+                            <button type="submit" class="primario">Salvar</button>
+                            <button type="button" id="cancelar" hidden>Cancelar edição</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="painel">
+                    <h3 id="lista-titulo"></h3>
+                    <div id="registros"></div>
+                </div>
+            </div>
         </section>
+
+        <p id="mensagem" role="status" aria-live="polite"></p>
+        <footer>Protótipo escolar • Dados salvos neste navegador</footer>
     </main>
-    <script src="script.js"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-
+/* Configuração geral da página */
 * {
     margin: 0;
     padding: 0;
@@ -10,16 +10,16 @@ body {
     background: #101827;
     color: white;
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     padding: 20px;
+    line-height: 1.5;
 }
 
+/* Caixa principal, centralizada na tela */
 .container {
     background: #1e293b;
     width: 100%;
-    max-width: 550px;
+    max-width: 1200px;
+    margin: 20px auto;
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 10px 30px #0005;
@@ -27,118 +27,307 @@ body {
 
 header {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 header h1 {
     color: #38bdf8;
-    margin-bottom: 10px;
+    font-size: 28px;
+    margin-bottom: 8px;
 }
 
-header p {
+header p, small, .muted, footer {
     color: #cbd5e1;
 }
 
+h2 {
+    color: #38bdf8;
+    margin: 20px 0 12px;
+    font-size: 21px;
+}
+
+h3 {
+    font-size: 17px;
+    margin-bottom: 8px;
+}
+
+/* Formulários e botões */
 .formulario {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
 }
 
 label {
+    display: block;
     font-weight: bold;
-    margin-top: 8px;
+    margin-top: 5px;
 }
 
-input, select {
-    padding: 13px;
+input, select, textarea {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
     border: 1px solid #475569;
     border-radius: 8px;
     background: #0f172a;
     color: white;
-    font-size: 15px;
-    outline: none;
+    font: inherit;
 }
 
-input:focus, select:focus {
-    border-color: #38bdf8;
+textarea {
+    min-height: 100px;
+    resize: vertical;
 }
 
 button {
-    padding: 14px;
-    margin-top: 15px;
-    border: none;
+    padding: 10px 12px;
+    border: 1px solid #475569;
     border-radius: 8px;
-    background: #0284c7;
+    background: #0f172a;
     color: white;
-    font-size: 16px;
+    font: inherit;
     font-weight: bold;
     cursor: pointer;
-    transition: 0.3s;
 }
 
-button:hover {
-    background: #0369a1;
+button:hover, button.ativo, button.primario {
+    background: #0284c7;
+    border-color: #38bdf8;
 }
 
-.resultado {
-    margin-top: 25px;
+nav, .abas, .acoes, .linha {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
 }
 
-.resultado h2 {
-    color: #38bdf8;
+nav button {
+    flex: 1;
+}
+
+.abas {
     margin-bottom: 15px;
 }
 
-.professor {
-    background: #0f172a;
-    padding: 12px;
-    border-radius: 8px;
-    margin-bottom: 8px;
-    border-left: 4px solid #38bdf8;
+.acoes {
+    margin-top: 15px;
 }
 
-#mensagem {
-    color: #f87171;
+/* Resultados da consulta e cadastros */
+#turma-atual {
+    margin-top: 15px;
+}
+
+.indicadores {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 15px 0;
+}
+
+.indicador {
+    width: calc(50% - 4px);
+    background: #0f172a;
+    padding: 10px;
+    border-radius: 8px;
     text-align: center;
+    color: #cbd5e1;
+}
+
+.indicador strong {
+    display: block;
+    color: #38bdf8;
+    font-size: 24px;
+}
+
+.cartao, .painel {
+    background: #0f172a;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    border-left: 4px solid #38bdf8;
+    overflow-wrap: anywhere;
+}
+
+.cartao p {
+    margin: 10px 0;
+    white-space: pre-wrap;
+}
+
+.cartao small, .cartao a {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.cartao button {
+    width: 100%;
+    margin-top: 5px;
+    background: #1e293b;
+}
+
+.cartao button:hover {
+    background: #0284c7;
+}
+
+.tag {
+    display: inline-block;
+    padding: 3px 8px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    background: #334155;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.pendente {
+    color: #fde68a;
+}
+
+.atrasada, .perigo {
+    color: #fca5a5;
+}
+
+.concluida {
+    color: #86efac;
+}
+
+.registro {
+    padding: 12px 0;
+    border-bottom: 1px solid #475569;
+}
+
+.registro p {
+    color: #cbd5e1;
+    margin-bottom: 8px;
+}
+
+.registro .linha {
+    margin-top: 8px;
+}
+
+summary {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+ul {
+    padding-left: 20px;
     margin-top: 10px;
 }
 
-.info-aluno {
-    color: #cbd5e1;
-    margin-bottom: 15px;
-    line-height: 1.7;
+a {
+    color: #38bdf8;
 }
 
+.vazio, #mensagem {
+    color: #cbd5e1;
+    margin: 15px 0;
+}
+
+footer {
+    font-size: 12px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+:focus-visible {
+    outline: 2px solid #38bdf8;
+    outline-offset: 2px;
+}
+
+/* Ajuste para telas pequenas */
 @media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
     .container {
         padding: 20px;
+        margin: 10px auto;
     }
 
     header h1 {
         font-size: 23px;
     }
+
+    nav button {
+        font-size: 14px;
+    }
 }
 
+/* Distribui os campos e os resultados em colunas */
 
-/* BOTÕES DOS PROFESSORES */
-
-.resultado a {
-    display: inline-block;
-    background: #0f172a;
-    color: #38bdf8;
-    padding: 12px 15px;
-    margin: 5px 0;
-    border-radius: 8px;
-    border-left: 4px solid #38bdf8;
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.3s;
-    cursor: pointer;
+.filtros, .cartoes, .gestao-colunas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
-.resultado a:hover {
-    background: #0284c7;
-    color: white;
-    transform: translateX(5px);
+.campo {
+    flex: 1;
+    min-width: 200px;
+}
+
+.cartao {
+    flex: 1 1 300px;
+    min-width: 0;
+}
+
+.gestao-colunas {
+    align-items: flex-start;
+}
+
+.gestao-colunas > .painel {
+    flex: 1;
+    min-width: 300px;
+}
+
+.indicador {
+    flex: 1;
+    width: auto;
+}
+
+#campos {
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#campos label {
+    flex: 1 1 200px;
+    min-width: 0;
+}
+
+#campos .largo {
+    flex-basis: 100%;
+}
+
+.registro {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+/* No celular, as colunas voltam a ficar uma abaixo da outra */
+@media (max-width: 700px) {
+    .filtros, .gestao-colunas, #campos {
+        flex-direction: column;
+    }
+
+    .campo, .gestao-colunas > .painel, #campos label, .cartao {
+        width: 100%;
+        min-width: 0;
+        flex: auto;
+    }
+
+    .indicador {
+        flex: 1 1 calc(50% - 4px);
+    }
 }
